@@ -23,15 +23,17 @@
                     <p style="font-size: 13px;">Silakan login terlebih dahulu untuk mendapatkan akses.</p>
                 </div>
     
+                @include('components.alert')
+
                 <div class="col-xl-12 mt-4">
     
-                    <form action="" method="POST">
+                    <form action="/handle_login" method="POST">
                         @csrf
                         <div class="mt-3">
                             <label for="user_id" style="font-weight: 500;">Username:</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" value="{{ old('username') }}" style="border-radius: 5px; height: 50px;" placeholder="Masukkan username anda">
                             @error('username')
-                                <span class="text-danger" style="font-size: 11px">{{ $message }}</span>
+                                <span class="text-danger" style="font-size: 12px">{{ $message }}</span>
                             @enderror
                         </div>
     
@@ -39,7 +41,7 @@
                             <label for="password" style="font-weight: 500;">Password:</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" style="border-radius: 5px; height: 50px;" placeholder="Masukkan password anda">
                             @error('password')
-                                <span class="text-danger" style="font-size: 11px">{{ $message }}</span>
+                                <span class="text-danger" style="font-size: 12px">{{ $message }}</span>
                             @enderror
                         </div>
     
