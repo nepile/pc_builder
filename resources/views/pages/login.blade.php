@@ -54,7 +54,7 @@
                 </div>
             </div>
     
-            <div class="col-xl-8 p-0 bg-primary d-xl-block d-none" style="height: 100%;">
+            <div class="col-xl-8 p-0 d-xl-block d-none" style="height: 100%;">
                 <img src="{{ asset('img/bg.jpg') }}" style="height: 100%; width: 100%; object-fit: cover;">
             </div>
         </div>
