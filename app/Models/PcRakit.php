@@ -11,7 +11,7 @@ class PcRakit extends Model
     use HasFactory;
     protected $table = 'pc_rakit';
 
-    public function getAllData()
+    public static function getAllData()
     {
         DB::table('pc_rakit')
             ->join('motherboard', 'pc_rakit.id_motherboard', '=', 'motherboard.id_motherboard')
@@ -22,7 +22,15 @@ class PcRakit extends Model
             ->join('casing', 'pc_rakit.id_casing', '=', 'casing.id_casing')
             ->join('monitor', 'pc_rakit.id_monitor', '=', 'monitor.id_monitor')
             ->join('keyboard', 'pc_rakit.id_keyboard', '=', 'keyboard.id_keyboard')
-            ->join('users', 'pc_rakit.id_user', '=', 'users.id_user')
-            ->get();
+            ->join('users', 'pc_rakit.id_user', '=', 'users.id')
+            ->select([
+                'motherboard.nama as nama_motherboard',
+                'motherboard.model as model_motherboard',
+                'motherboard.harga as harga_motherboard',
+                'motherboard.gambar as gambar_motherboard'
+            ])
+            ->where('users.id', '=', auth()->user()->id)
+            ->get()
+            ->toArray();
     }
 }

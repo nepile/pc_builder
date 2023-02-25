@@ -16,7 +16,7 @@ class CekRole
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (in_array($request->auth()->user(), $roles)) {
+        if (in_array($request->user()->role, $roles)) {
             return $next($request);
         }
 
